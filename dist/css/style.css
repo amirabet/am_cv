@@ -5,6 +5,36 @@ html {
 }
 body{
 }
+/*
+  Sections Layout
+*/
+body>main{
+  display: flex;
+  flex-wrap: wrap;
+  /*flex-direction: row-reverse;*/
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+/*body>main>* {
+  flex: 12em 1 1;
+}*/
+body>main>header{
+  order:2;
+  /*flex:4;*/
+  flex-basis: 80%;
+}
+body>main>section{
+  order:3;
+  /*flex:4;*/
+  flex-basis:80%;
+}
+body>main>aside{
+  order:1;
+  /*flex:1;*/
+  flex-basis:15%;
+  align-self:flex-end;
+}
 /* ****************************** 
 CUSTOM STYLES 1 - Default
 ****************************** */
@@ -28,12 +58,6 @@ body>main{
 body>footer{
   max-width: 72em;
   margin: 4em auto;
-}
-/*
-  Sections Layout
-*/
-body>main{
-  display: flex;
 }
 /*
   Headings and Paragraph
@@ -71,12 +95,34 @@ p{
   margin: 0 0 1em 0;
 }
 /*
+  Main Section content Layout
+*/
+/* One job */
+body > main > section > article{
+  display:block;
+}
+/* Table of Skills */
+body > main > section > article > footer > section{
+  display:flex;
+}
+/*
   Aside Layout
 */
 /* Logo */
-body > main > aside > img{
+body > main > aside > figure{
+  margin: 0 0 1em;
+}
+body > main > aside > figure img{
   max-width: 100%;
   height: auto;
+  border-radius: 50%;
+}
+body > main > aside > figure img.no-print{
+  border-radius: 50%;
+}
+body > main > aside > figure img.only-print{
+  border-radius: 6px;
+  border: 2px solid #000;
 }
 body > main > aside > img.no-print{
   border-radius:50%;
@@ -93,6 +139,29 @@ body > main > aside a{
 body > main > aside a img{
   height: 1.4em;
   width:auto;
+}
+/* 
+Typewriter effect. Genius!
+https://codepen.io/t_afif/pen/MWoabrq
+*/
+.cssanimations  body > main > header > h1 {
+  display:inline-flex;
+}
+
+.cssanimations  body > main > header > h1 span {
+  word-break: break-all;
+  height: 1.2em;
+  width:0%;
+  overflow: hidden;
+  animation:typewriter 3s linear 1s 1 normal forwards;
+}
+.cssanimations  body > main > header > h1 span:before {
+  content:" ";
+  display:inline-block;
+}
+
+@keyframes typewriter{
+  90%,100% {width:100%}
 }
 /* ****************************** 
 Selection
@@ -130,4 +199,8 @@ Print related styles
   /* Helper classes*/
   .no-print{display:none!important;}
   .only-print{display:block!important;}
+  /* Dont's use typewriter effect in print mode */
+  body > main > header > h1 span{
+    width:100%!important;
+  }
 }
