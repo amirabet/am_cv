@@ -130,6 +130,7 @@ body > main > aside > img.no-print{
 /* Socialmedia Links */
 body > main > aside a{
   display: block;
+  padding-left:1.2em;
   padding-bottom: .7em;
   line-height: 1.4em;
   font-weight: bold;
@@ -202,5 +203,9 @@ Print related styles
   /* Dont's use typewriter effect in print mode */
   body > main > header > h1 span{
     width:100%!important;
+  }
+  /* Remove left padding on sm links */
+  body > main > aside a{
+    padding-left:0;
   }
 }
