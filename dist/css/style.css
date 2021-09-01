@@ -1,0 +1,133 @@
+/* ****************************** 
+Page configuration
+****************************** * /
+html {
+}
+body{
+}
+/* ****************************** 
+CUSTOM STYLES 1 - Default
+****************************** */
+/*
+  Page Configuration
+*/
+body {
+  background:#DDD;
+  padding: 2em;
+  font-family: monospace;
+  /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+}
+body>main{
+  max-width: 72em;
+  margin: 0 auto;
+  padding: 3em 4em 4em;
+  background: #FFF;
+  border:1px solid #CCC;
+  box-shadow: 3px 3px 3px #AAA;
+}
+body>footer{
+  max-width: 72em;
+  margin: 4em auto;
+}
+/*
+  Sections Layout
+*/
+body>main{
+  display: flex;
+}
+/*
+  Headings and Paragraph
+*/
+h1{
+  font-size: 1.6em;
+  margin: 0 0 0.47em 0;
+}
+h2{
+  font-size: 1.3em;
+  margin: 0 0 0.47em 0;
+  font-style: italic;
+}
+h3{
+  display:inline-block;
+  margin: 0 0 0.3em 0;
+  font-size: 1.15em;
+}
+h4{
+  display:inline-block;  
+  margin: 0 0 0.3em 0.3em;
+  font-size: 1em;
+  font-weight: normal;
+  color:#666;
+}
+h5{
+  font-size: 1em;
+  margin: 0;
+}
+h6{
+  font-size: 1em;
+  margin: 0;
+}
+p{
+  margin: 0 0 1em 0;
+}
+/*
+  Aside Layout
+*/
+/* Logo */
+body > main > aside > img{
+  max-width: 100%;
+  height: auto;
+}
+body > main > aside > img.no-print{
+  border-radius:50%;
+}
+/* Socialmedia Links */
+body > main > aside a{
+  display: block;
+  padding-bottom: .7em;
+  line-height: 1.4em;
+  font-weight: bold;
+  text-decoration: none;
+  color:#000;
+}
+body > main > aside a img{
+  height: 1.4em;
+  width:auto;
+}
+/* ****************************** 
+Selection
+****************************** */
+::-moz-selection {
+  background: #D8D7BA;
+  color:#000;
+}
+
+::selection {
+  background: #D8D7BA;
+  color:#000;
+}
+/* ****************************** 
+Print related styles  
+****************************** */
+.only-print{display:none;}
+@media print {
+  /**/
+  body {
+    background:#FFF;
+    padding: 0;
+  }
+  body>main{
+    width: 100%;
+    max-width: auto;
+    margin: 0;
+    padding: 0;
+    border:0px solid #FFF;
+  }
+  /*Hide Links URL when print*/
+  a[href]:after {
+    content: none !important;
+  }
+  /* Helper classes*/
+  .no-print{display:none!important;}
+  .only-print{display:block!important;}
+}

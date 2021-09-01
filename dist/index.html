@@ -1,20 +1,11 @@
-<!-- TODOs:
-  Make it accessible compilant
-  Screen reader readY
-   ______________
-  |              |
-  |     /""\     |
-  |     \__/     |
-  |   /""\/""\   |
-  |   \__/\__/   |
-  |     ====     |
-  |   artur.es   |
-  |______________|
+<!-- 
+             /-\      /-\           
+           /-----\  /-----\            
+         /-------//\\-------\          
+       /-------////\\\\-------\ 
 
-               /\               
-              /__\              
-             /\  /\             
-            /__\/__\ 
+       ========================
+               artur.es
 -->
 <!doctype html>
 <html class="no-js" lang="es">
@@ -35,8 +26,9 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- Extra web stuff -->
-    <meta name="theme-color" content="#fafafa">
+    <meta name="theme-color" content="#000000">
   </head>
 
   <body>
@@ -45,7 +37,7 @@
       <!-- The page's main headings -->
       <header>
         <h1>Artur Mirabet Gea</h1>
-        <h2>Enfocado en el potencial comunicativo de la tecnología.<br/>Me motiva la resolución de problemas complejos, especialmente edge cases. Tengo actitud empática, mente creativa  y me gusta trabajar en equipo</h2>
+        <h2><q>Enfocado en el potencial comunicativo de la tecnología.<br/>Me motiva la resolución de problemas complejos, especialmente edge cases. Tengo actitud empática, mente creativa  y me gusta trabajar en equipo.</q></h2>
       </header>
 
       <!-- Section Jobs experienece-->
@@ -82,7 +74,7 @@
               <h6>CSS</h6>
               <!-- Description -->
               <p>CSS3 (Less). Bootstrap.</p>
-              <h6>.NET</h6>
+              <h6>JS</h6>
               <!-- Description -->
               <p>ES6 + jQuery. APIs (GMaps). JSON + Ajax. Gulp.</p>
             </section>
@@ -180,6 +172,35 @@
           <p><i>Mi formación me proporcionó conocimientos en corrientes artísticas y estéticas, junto con recursos creativos para la  elaboración de contenidos escritos y audiovisuales.</i></p>
         </article>
 
+        <!-- Languajes -->
+        <article>
+          <footer>
+            <!-- Each stack is a section -->
+            <section>
+              <!-- Title -->
+              <h5>Castellano </h5>
+              <p> Perfectamente hablado y escrito.</p>
+              <h5>Catalán </h5>
+              <p> Perfectamente hablado y escrito. Nivel C.</p>
+              <h5>Inglés </h5>
+              <p> Buena comprensión oral y escrita.</p>
+            </section>
+          </footer>
+          
+        </article>
+
+        <!-- Softskills -->
+        <article>
+          <footer>
+            <!-- Each stack is a section -->
+            <section>
+              <!-- Title -->
+              <h5>Soft Skills </h5>
+              <p> Quick learner, metódico y con pasión por el detalle. Autónomo, autoexigente e implicado.</p>
+            </section>
+          </footer>
+        </article>
+
         <!-- Blank job template ready - ->
         <article>
           <!-- job's heading - ->
@@ -214,26 +235,15 @@
       <aside>
         <!-- Photo -->
         <figure>
-          <img src="img/amirabet.png" alt="aMirabet">
-          <figcaption>16/10/1980 en Barcelona</figcaption>
+          <img src="img/amlogo.png" alt="aMirabet" class="no-print">
+          <img src="img/amirabet.png" alt="aMirabet" class="only-print">
         </figure>
 
-        <!-- KnowHows -->
+        <!-- KnowHows - ->
         <section>
           <!-- Each knowledge group is an article -->
 
-          <!-- Languajes -->
-          <article>
-            <!-- Each knowHow is an tag -->
-            <p><b>Castellano </b> Perfectamente hablado y escrito.</p>
-            <p><b>Catalán </b> Perfectamente hablado y escrito. Nivel C.</p>
-            <p><b>Inglés </b> Buena comprensión oral y escrita.</p>
-          </article>
-
-          <!-- Softskills -->
-          <article>
-            <p><b>Soft Skills </b> Quick learner, metódico y con pasión por el detalle. Autónomo, autoexigente e implicado.</p>
-          </article>
+          
           
           <!-- Other Tech stack 
             NOT VISIBLE RIGHT NOW
@@ -247,11 +257,29 @@
             <p class="tag knowhow mid">CSS Grid</p>
           </article> -->
 
-        </section>
+        <!--</section> -->
 
         <!-- Links -->
         <footer>
-          <a href="" target="_blank" 
+          <a href="https://www.linkedin.com/in/amirabet/" target="_blank" class="no-underline d-block">
+            <img src="img/linkedin.svg" alt="LinkedIn">
+            LinkedIn
+          </a>
+
+          <a href="https://www.behance.net/amirabet/" target="_blank" class="no-underline d-block">
+            <img src="img/behance.svg" alt="Behance">
+            Behance
+          </a>
+
+          <a href="https://github.com/amirabet" target="_blank" class="no-underline d-block">
+            <img src="img/github.svg" alt="GitHub">
+            GitHub
+          </a>
+
+          <a href="https://codepen.io/amirabet" target="_blank" class="no-underline d-block">
+            <img src="img/codepen.svg" alt="CodePen">
+            CodePen
+          </a>
         </footer>
       </aside>
 
@@ -259,8 +287,9 @@
 
     
 
-    <footer>
+    <footer class="no-print">
       <!-- Loading APIs zone -->
+      <span class="btn btn-dark">Imprimir</span>
     </footer>
     
     
@@ -270,11 +299,12 @@
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 
-    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <!-- Google Analytics - ->
     <script>
       window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
       ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async></script>
+    -->
   </body>
 </html>
