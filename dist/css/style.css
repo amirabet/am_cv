@@ -10,7 +10,7 @@ body{
 */
 body>main{
   display: grid;
-  grid-template-columns:  14em auto;
+  grid-template-columns: auto;
   grid-template-rows: auto;
 }
 body>main>header{
@@ -21,47 +21,106 @@ body>main>section{
 }
 body>main>aside{
   grid-area: aside;
-  width:11em;
+  padding-bottom:1em;
 }
 /* Grid Areas */
 body>main{
   grid-template-areas: 
-    "aside header"
-    "aside section";
-}/* ****************************** 
+    "aside"
+    "header"
+    "section";
+}
+/* Two columns layout, has to specify "print" mediaquery despite min-width */
+@media (min-width:38em) {
+  body>main{
+    grid-template-columns:  10em auto;
+  }
+  body>main>aside{
+    width:8em;
+  }
+  /* Grid Areas */
+  body>main{
+    grid-template-areas: 
+      "aside header"
+      "aside section";
+  }
+}
+@media (min-width:52em), print {
+  body>main{
+    grid-template-columns:  14em auto;
+  }
+  body>main>aside{
+    width:11em;
+  }
+  /* Grid Areas */
+  body>main{
+    grid-template-areas: 
+      "aside header"
+      "aside section";
+  }
+}
+
+
+/* ****************************** 
 CUSTOM STYLES 1 - Default
 ****************************** */
 /*
   Page Configuration
 */
+html{
+  font-family: monospace;
+}
 body {
   background:#DDD;
-  padding: 2em;
+  padding: .6em;
   font-family: monospace;
   /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
 }
 body>main{
-  max-width: 72em;
+  max-width: 68em;
   margin: 0 auto;
-  padding: 4em;
+  padding: 1.6em;
   background: #FFF;
   border:1px solid #CCC;
   box-shadow: 3px 3px 3px #AAA;
 }
 body>footer{
   max-width: 72em;
-  margin: 4em auto;
+  margin: 1.6 auto;
+}
+@media screen and (min-width:26em){
+  body {
+    padding: 1.2em;
+  }
+  body>main{
+    padding: 2.4em;
+  }
+  body>footer{
+    margin: 2.4em auto;
+  }
+}
+@media (min-width:38em), print{
+  body {
+    padding: 2em;
+  }
+  body>main{
+    padding: 4em;
+  }
+  body>footer{
+    margin: 4em auto;
+  }
 }
 /*
   Headings and Paragraph
 */
 h1{
-  font-size: 1.6em;
-  margin: 0 0 0.47em 0;
+  font-size: 1.4em;
+  margin: 0 0 0.37em 0;
 }
 h2{
-  font-size: 1.3em;
-  margin: 0 0 0.47em 0;
+  font-size: 1.2em;
+  margin: 0 0 0.37em 0;
+  
   font-style: italic;
 }
 h3{
@@ -88,28 +147,41 @@ p{
   margin: 0 0 .6em 0;
 }
 header + p{
-  margin: 0 0 1em 0;
+  margin: 0 0 .8em 0;
+}
+@media (min-width:38em), print{
+  h1{
+    font-size: 1.6em;
+    margin: 0 0 0.47em 0;
+    
+  }
+  h2{
+    font-size: 1.3em;
+    margin: 0 0 0.47em 0;
+  }
 }
 /*
   Main Section content Layout
 */
 /* One job */
 body > main > section > article{
-  padding-top: 2em;
+  padding-top: 1.6em;
 }
 /* Table of Skills */
-body > main > section > article > footer > section{
-  display:flex;
-  flex-wrap: wrap;
-}
-body > main > section > article > footer > section h5{
-  flex:0 0 8em;
-}
-body > main > section > article > footer > section > p{
-  flex:1 0;
-}
-body > main > section > article > footer > section > aside{
-  flex:1 0 auto;
+@media (min-width:24em), print{
+  body > main > section > article > footer > section{
+    display:flex;
+    flex-wrap: wrap;
+  }
+  body > main > section > article > footer > section h5{
+    flex:0 0 8em;
+  }
+  body > main > section > article > footer > section > p{
+    flex:1 0;
+  }
+  body > main > section > article > footer > section > aside{
+    flex:1 0;
+  }
 }
 /*
   Aside Layout
@@ -131,12 +203,10 @@ body > main > aside > figure img.only-print{
   /*border: 2px solid #000;*/
   filter:brightness(0.9);
 }
-body > main > aside > img.no-print{
-  border-radius:50%;
-}
 /* Socialmedia Links */
 body > main > aside a{
-  display: block;
+  display: inline-block;
+  width:100%;
   padding-left:1.2em;
   padding-bottom: .7em;
   line-height: 1.4em;
@@ -147,6 +217,28 @@ body > main > aside a{
 body > main > aside a img{
   height: 1.4em;
   width:auto;
+}
+@media screen and (max-width:38em){
+  body > main > aside > figure{
+    text-align: center;
+  }
+  body > main > aside > figure img{
+    width: 12em;
+  }
+  body > main > aside a{
+    width:25%;
+    padding-left:0;
+    float: left;
+  }
+}
+@media screen and (max-width:26em){
+  body > main > aside > figure img{
+    width: 9em;
+  }
+  body > main > aside a{
+    width:50%;
+    text-align: center;
+  }
 }
 /* 
 Typewriter effect. Genius!
