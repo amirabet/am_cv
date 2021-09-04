@@ -145,7 +145,7 @@ body>main{
 }
 body>footer{
   max-width: 72em;
-  margin: 1.6 auto;
+  margin: 1.6em auto;
 }
 @media screen and (min-width:26em){
   body {
