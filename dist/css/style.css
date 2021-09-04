@@ -60,6 +60,66 @@ body>main{
   }
 }
 
+/**********************
+ONLY CSS MODAL
+https://codepen.io/timothylong/pen/HhAer
+***********************/
+.modal-window {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.55);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+.modal-window:target {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-window > div {
+  width: 420px;
+  max-width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.6em;
+  background: #FFF;
+}
+.modal-window header {
+  font-weight: bold;
+}
+.modal-window h1 {
+  font-size: 150%;
+  margin: 0 0 15px;
+}
+
+.modal-close {
+  color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none;
+}
+.modal-close:hover {
+  color: black;
+}
+/* UL styles */
+ul{
+  padding:0;
+  list-style: none;
+}
+
 
 /* ****************************** 
 CUSTOM STYLES 1 - Default
@@ -74,7 +134,6 @@ body {
   background:#DDD;
   padding: .6em;
   font-family: monospace;
-  /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
 }
 body>main{
   max-width: 68em;
@@ -240,6 +299,62 @@ body > main > aside a img{
     text-align: center;
   }
 }
+/*
+ BUTTONS!
+*/
+.btn{
+  display:inline-block;
+	cursor: pointer;
+  border-radius: 0px;
+  text-decoration: none;
+  padding: .8em 1em;
+  font-size: .8em;
+  line-height: 1.2em;
+  text-transform: uppercase;
+  font-weight:700;
+  letter-spacing: 3px;
+  transition: all .4s ease-in-out;
+}
+.btn .icon{
+  height: 1.2em;
+  width:auto;
+
+}
+.btn-mid {
+    padding: 1em 1.2em;
+    font-size: 1em;
+    line-height: 1.5em;
+}
+.btn-mid .btn--icon{
+  height: 1.5em;  
+}
+.btn-big {
+    padding: 1.2em 1.5em;
+    font-size: 1.4em;
+    line-height: 2em;
+}
+.btn-big .btn--icon{
+  height: 2em;  
+}
+.btn-light{
+    border:2px solid #555;
+    background: transparent;
+    color: #555;
+}
+.btn-light:hover,.btn-light:active{
+    background: #fff;
+    color: #1f1f1f;
+}
+.btn-dark{
+    border:2px  solid #333;
+    background: #333;
+    color: #CCC;
+}
+.btn-dark:hover, .btn-dark:active{
+    border:solid 2px #1f1f1f;
+    background: #1f1f1f;
+    color: #fff;
+}
 /* 
 Typewriter effect. Genius!
 https://codepen.io/t_afif/pen/MWoabrq
@@ -264,6 +379,18 @@ https://codepen.io/t_afif/pen/MWoabrq
   90%,100% {width:100%}
 }
 /* ****************************** 
+Common CSS helpers
+****************************** */
+.text-center{
+  text-align: center;
+}
+.text-left{
+  text-align: left;
+}
+.text-right{
+  text-align: right;
+}
+/* ****************************** 
 Selection
 ****************************** */
 ::-moz-selection {
@@ -280,7 +407,12 @@ Print related styles
 ****************************** */
 .only-print{display:none;}
 @media print {
-  /**/
+  /* Browser page configuration */
+  @page{
+    size: auto;
+    margin: 0.4in;
+  }
+  /* Base styles */
   body {
     background:#FFF;
     padding: 0;
