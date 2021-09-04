@@ -9,11 +9,11 @@
                artur.es
 -->
 <!doctype html>
-<html class="no-js" lang="es">
+<html class="no-js " lang="es" moznomarginboxes>
 
   <head>
     <meta charset="utf-8">
-    <title>A. Mirabet</title>
+    <title>A. Mirabet - CV</title>
     <meta name="description" content="UX / FrontEnd / Design - Enfocado en el potencial comunicativo de la tecnología. Me motiva la resolución de problemas complejos, especialmente edge cases. Tengo actitud empática, mente creativa  y me gusta trabajar en equipo.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- OPENGRAPH -->
@@ -311,8 +311,33 @@
 
     <footer class="no-print">
       <!-- Loading APIs zone -->
-      <span class="btn btn-dark">Imprimir</span>
+      <!-- Print Button in center div -->
+      <div class="text-center">
+        <a class="btn btn-mid btn-dark" href="#open-modal">
+          <img src="img/print_white_24dp.svg" class="btn--icon" alt="IMPRIMIR"> &nbsp;
+          Imprimir Currículum
+          &nbsp; <img src="img/print_white_24dp.svg" class="btn--icon" alt="IMPRIMIR">
+        </a>
+      </div>
     </footer>
+
+    <div id="open-modal" class="modal-window no-print">
+      <div>
+        <a href="#" title="Cerrar" class="modal-close">CERRAR</a>
+        <h2>Para imprimir el currículum:</h2>
+        <ul>
+          <li>📄 Configura la página en <b>formato vertical</b></li>
+          <li>❎ <b>Desmarca encabezados</b> en las <em>Opciones de Impresión</em></li>
+          <li>🌍 Mejor para el planeta si lo <b>guardas en .PDF</b></li>
+        </ul>
+        <div class="text-center">
+          <br/>
+          <span class="btn btn-mid btn-light" id="printcv">👍 Entendido, vamos a IMPRIMIR 🖨️</span>
+          <br/><br/>
+        </div>
+        
+      </div>
+    </div>
     
     
 
