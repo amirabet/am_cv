@@ -33,7 +33,7 @@ body>main{
 /* Two columns layout, has to specify "print" mediaquery despite min-width */
 @media (min-width:38em) {
   body>main{
-    grid-template-columns:  10em auto;
+    grid-template-columns: auto 10em ;
   }
   body>main>aside{
     width:8em;
@@ -41,13 +41,13 @@ body>main{
   /* Grid Areas */
   body>main{
     grid-template-areas: 
-      "aside header"
-      "aside section";
+      "header aside"
+      "section aside ";
   }
 }
 @media (min-width:52em), print {
   body>main{
-    grid-template-columns:  14em auto;
+    grid-template-columns: auto 14em;
   }
   body>main>aside{
     width:11em;
@@ -55,8 +55,8 @@ body>main{
   /* Grid Areas */
   body>main{
     grid-template-areas: 
-      "aside header"
-      "aside section";
+      "header aside"
+      "section aside";
   }
 }
 
@@ -128,12 +128,12 @@ CUSTOM STYLES 1 - Default
   Page Configuration
 */
 html{
-  font-family: monospace;
+  font-family: monospace;/*'Open Sans', sans-serif;*/
 }
 body {
   background:#DDD;
   padding: .6em;
-  font-family: monospace;
+  font-family: monospace;/*'Open Sans', sans-serif;*/
 }
 body>main{
   max-width: 68em;
@@ -173,23 +173,23 @@ body>footer{
   Headings and Paragraph
 */
 h1{
-  font-size: 1.4em;
-  margin: 0 0 0.37em 0;
+  font-size: 2em;
+  margin: 0;
 }
 h2{
-  font-size: 1.2em;
+  font-size: 1.1em;
   margin: 0 0 0.37em 0;
-  
-  font-style: italic;
+  color:#999;  
 }
+
 h3{
   display:inline-block;
-  margin: 0 0 0.3em 0;
+  margin: 0;
   font-size: 1.15em;
 }
+
 h4{
-  display:inline-block;  
-  margin: 0 0 0.3em 0.3em;
+  margin: 0 0 0.3em;
   font-size: 1em;
   font-weight: normal;
   color:#666;
@@ -210,12 +210,12 @@ header + p{
 }
 @media (min-width:38em), print{
   h1{
-    font-size: 1.6em;
-    margin: 0 0 0.47em 0;
+    font-size: 2em;
+    margin: 0;
     
   }
   h2{
-    font-size: 1.3em;
+    font-size: 1.2em;
     margin: 0 0 0.47em 0;
   }
 }
@@ -241,6 +241,25 @@ body > main > section > article{
   body > main > section > article > footer > section > aside{
     flex:1 0;
   }
+}
+
+ul{
+  margin:0;
+  font-size: .9em;
+  list-style-type:"· ";
+  list-style-position: inside;
+}
+.description{
+  font-size: 1.1em;
+}
+.job-tags{
+  list-style-type: none;
+  font-size: .8em;
+}
+
+.job-tags li{
+  display: inline-block;
+  font-weight: 800;
 }
 /*
   Aside Layout
