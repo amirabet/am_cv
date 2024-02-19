@@ -26,34 +26,29 @@ body>main>aside{
 /* Grid Areas */
 body>main{
   grid-template-areas: 
-    "aside"
     "header"
-    "section";
+    "section"
+    "aside";
 }
 /* Two columns layout, has to specify "print" mediaquery despite min-width */
 @media (min-width:38em) {
   body>main{
-    grid-template-columns: auto 10em ;
-  }
-  body>main>aside{
-    width:8em;
-  }
-  /* Grid Areas */
-  body>main{
+    grid-template-columns: auto 10em;
+    grid-column-gap: 1em;
     grid-template-areas: 
       "header aside"
       "section aside ";
+    
+  }
+  body>main>aside{
+    grid-area: aside;
+    padding: 4em 0 0;
   }
 }
 @media (min-width:52em), print {
   body>main{
     grid-template-columns: auto 14em;
-  }
-  body>main>aside{
-    width:11em;
-  }
-  /* Grid Areas */
-  body>main{
+    grid-column-gap: 3em;
     grid-template-areas: 
       "header aside"
       "section aside";
@@ -143,6 +138,11 @@ body>main{
   border:1px solid #CCC;
   box-shadow: 3px 3px 3px #AAA;
 }
+body>main>section>article>header>h3>img{
+  height: 1.1em;
+  width:auto;
+  margin-right:.6em;
+}
 body>footer{
   max-width: 72em;
   margin: 1.6em auto;
@@ -185,6 +185,7 @@ h2{
 h3{
   display:inline-block;
   margin: 0;
+  font-weight: 400;
   font-size: 1.15em;
 }
 
@@ -196,7 +197,7 @@ h4{
 }
 h5{
   font-size: 1em;
-  margin: 0;
+  margin: .6em 0 0;
 }
 h6{
   font-size: 1em;
@@ -242,7 +243,7 @@ body > main > section > article{
     flex:1 0;
   }
 }
-
+/* Unordered Lists */
 ul{
   margin:0;
   font-size: .9em;
@@ -250,11 +251,13 @@ ul{
   list-style-position: inside;
 }
 .description{
+  margin-top:1.1em;
   font-size: 1.1em;
 }
 .job-tags{
   list-style-type: none;
   font-size: .8em;
+  margin-top:.6em;
 }
 
 .job-tags li{
@@ -378,21 +381,24 @@ body > main > aside a img{
 Typewriter effect. Genius!
 https://codepen.io/t_afif/pen/MWoabrq
 */
-.cssanimations  body > main > header > h1 {
-  display:inline-flex;
+@media (min-width:38em) {
+  .cssanimations  .typewriter {
+    display:inline-flex;
+  }
+  
+  .cssanimations  .typewriter span {
+    word-break: break-all;
+    height: 1.2em;
+    width:0%;
+    overflow: hidden;
+    animation:typewriter 3s linear 1s 1 normal forwards;
+  }
+  .cssanimations  .typewriter span:before {
+    content:" ";
+    display:inline-block;
+  }
 }
 
-.cssanimations  body > main > header > h1 span {
-  word-break: break-all;
-  height: 1.2em;
-  width:0%;
-  overflow: hidden;
-  animation:typewriter 3s linear 1s 1 normal forwards;
-}
-.cssanimations  body > main > header > h1 span:before {
-  content:" ";
-  display:inline-block;
-}
 
 @keyframes typewriter{
   90%,100% {width:100%}
