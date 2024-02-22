@@ -58,7 +58,7 @@ https://codepen.io/timothylong/pen/HhAer
 ***********************/
 .modal-window {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.55);
+  background-color: var(--modal-background);
   top: 0;
   right: 0;
   bottom: 0;
@@ -82,7 +82,7 @@ https://codepen.io/timothylong/pen/HhAer
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 1.6em;
-  background: #FFF;
+  background: var(--white);
 }
 .modal-window header {
   font-weight: bold;
@@ -93,7 +93,7 @@ https://codepen.io/timothylong/pen/HhAer
 }
 
 .modal-close {
-  color: #aaa;
+  color: var(--gray-light);
   line-height: 50px;
   font-size: 80%;
   position: absolute;
@@ -104,7 +104,7 @@ https://codepen.io/timothylong/pen/HhAer
   text-decoration: none;
 }
 .modal-close:hover {
-  color: black;
+  color: var(--black);
 }
 /* UL styles */
 ul{
@@ -120,20 +120,20 @@ CUSTOM STYLES 1 - Default
   Page Configuration
 */
 html{
-  font-family: monospace;/*'Open Sans', sans-serif;*/
+  font-family: monospace;
 }
 body {
-  background:#DDD;
+  background:var(--gray-ultralight);
   padding: .6em;
-  font-family: monospace;/*'Open Sans', sans-serif;*/
+  font-family: monospace;
 }
 body>main{
   max-width: 68em;
   margin: 0 auto;
   padding: 1.6em;
-  background: #FFF;
-  border:1px solid #CCC;
-  box-shadow: 3px 3px 3px #AAA;
+  background: var(--white);
+  border:1px solid var(--gray-light-b);
+  box-shadow: 3px 3px 3px var(--gray-light);
 }
 body>main>section>article>header>h3>img{
   height: 1.1em;
@@ -178,7 +178,7 @@ h2{
   font-size: 1.4em;
   font-weight: normal;
   margin: 0 0 0.37em 0;
-  color:#666;  
+  color:var(--gray-medium);  
 }
 
 h3{
@@ -192,11 +192,13 @@ h4{
   margin: 0 0 0.3em;
   font-size: 1em;
   font-weight: normal;
-  color:#666;
+  color:var(--gray-medium);
 }
 h5{
   font-size: 1em;
   margin: .6em 0 0;
+  font-weight: normal;
+  font-style: italic;
 }
 h6{
   font-size: 1em;
@@ -220,14 +222,16 @@ header + p{
   }
 }
 /*
-  Main Section content Layout
+  Main Section content Layout *******************
 */
 /* One job */
 body > main > section > article{
   padding-top: 1.6em;
 }
 
-/* Unordered Lists */
+/* 
+  Unordered Lists *******************************
+*/
 ul{
   margin:0;
   font-size: .9em;
@@ -246,10 +250,19 @@ ul{
 
 .job-tags li{
   display: inline-block;
-  font-weight: 800;
+  font-weight: bold;
 }
+
+.job-tags li:after{
+  content: " ·";
+}
+
+.job-tags li:last-child:after{
+  content: "";
+}
+
 /*
-  Aside Layout
+  Aside Layout *************************
 */
 /* Logo */
 body > main > aside > figure{
@@ -274,42 +287,53 @@ body > main > aside > article{
 }
 body > main > aside > article h4{
   font-weight: bold;
-  color:#000;
+  font-size: 1.1em;
+  color:var(--black);
 }
 body > main > aside > article h5{
   font-weight: normal;
-  color:#333;
+  color:var(--gray-dark);
+  font-size: .9em;
+  font-style: normal;
 }
 .level{
   position: relative;
-  border-bottom:2px solid #CCC;
   box-sizing: border-box;
+  border-bottom:2px solid var(--gray-light-b);
 }
 .level:after{
   content: " ";
-  box-sizing: border-box;
   position: absolute;
+  box-sizing: border-box;
   width: 0%;
   left:0;
   bottom:-2px;
-  border-bottom:2px solid #000;
+  border-bottom:2px solid var(--black);
 }
 
-/* Socialmedia Links */
+/* 
+  Socialmedia Links ******************
+*/
 body > main > aside a{
   display: inline-block;
   width:100%;
-  padding-left:1.2em;
-  padding-bottom: .7em;
   line-height: 1.4em;
   font-weight: bold;
   text-decoration: none;
-  color:#000;
+  color:var(--black);
+}
+body > main > aside a:hover{
+  text-decoration: none;
+  color:var(--gray-dark);
 }
 body > main > aside a img{
   height: 1.4em;
   width:auto;
 }
+
+/*
+  Profile Image, different in print mode (discarded) *******************
+*/
 @media screen and (max-width:38em){
   body > main > aside > figure{
     text-align: center;
@@ -370,23 +394,23 @@ body > main > aside a img{
   height: 2em;  
 }
 .btn-light{
-    border:2px solid #555;
+    border:2px solid var(--gray-medium);
     background: transparent;
     color: #555;
 }
 .btn-light:hover,.btn-light:active{
-    background: #fff;
-    color: #1f1f1f;
+    background: var(--white);
+    color: var(--black);
 }
 .btn-dark{
     border:2px  solid #333;
-    background: #333;
-    color: #CCC;
+    background: var(--gray-dark);
+    color: var(--gray-light-b);
 }
 .btn-dark:hover, .btn-dark:active{
-    border:solid 2px #1f1f1f;
-    background: #1f1f1f;
-    color: #fff;
+    border:solid 2px var(--black);
+    background: var(--black);
+    color: var(--white);
 }
 /* 
 Typewriter effect. Genius!
@@ -402,11 +426,17 @@ https://codepen.io/t_afif/pen/MWoabrq
     height: 1.2em;
     width:0%;
     overflow: hidden;
-    animation:typewriter 3s linear 1s 1 normal forwards;
+    animation:typewriter 3s linear 2s 1 normal forwards;
   }
+
   .typewriter span:before {
     content:" ";
     display:inline-block;
+  }
+
+  .typewriter span.typewriter--first {
+    animation-duration: 2s;
+    animation-delay:1s;
   }
 }
 
@@ -416,19 +446,19 @@ https://codepen.io/t_afif/pen/MWoabrq
 
 /* Skills level animated bars */
 .level--1:after{
-  animation:level1 0.5s linear 3.5s 1 normal forwards;
+  animation:level1 0.5s linear 4s 1 normal forwards;
 }
 .level--2:after{
-  animation:level2 1s linear 3.5s 1 normal forwards;
+  animation:level2 1s linear 4s 1 normal forwards;
 }
 .level--3:after{
-  animation:level3 1.5s linear 3.5s 1 normal forwards;
+  animation:level3 1.5s linear 4s 1 normal forwards;
 }
 .level--4:after{
-  animation:level4 2s linear 3.5s 1 normal forwards;
+  animation:level4 2s linear 4s 1 normal forwards;
 }
 .level--5:after{
-  animation:level5 2.5s linear 3.5s 1 normal forwards;
+  animation:level5 2.5s linear 4s 1 normal forwards;
 }
 
 @keyframes level1{
@@ -482,7 +512,7 @@ Print related styles
   }
   /* Base styles */
   body {
-    background:#FFF;
+    background:var(--white);
     padding: 0;
   }
   body>main{
@@ -490,7 +520,7 @@ Print related styles
     max-width: auto;
     margin: 0;
     padding: 0;
-    border:0px solid #FFF;
+    border:0px solid var(--white);
   }
   /*Hide Links URL when print*/
   a[href]:after {
@@ -507,7 +537,7 @@ Print related styles
   }
 
   /* Don't use typewriter effect in print mode */
-  .typewriter span{
+  .typewriter span, .typewriter--start span{
     width:100%!important;
   }
 
@@ -527,4 +557,18 @@ Print related styles
   .level--5:after{
     width: 100%;
   }
+}
+
+/* CSS vars */
+:root{
+
+  /*Colors*/
+  --black:#000;
+  --white:#FFF;
+  --gray-dark:#333;
+  --gray-medium:#666;
+  --gray-light:#AAA;
+  --gray-light-b:#CCC;
+  --gray-ultralight:#DDD;
+  --modal-background:rgba(0, 0, 0, 0.55);
 }
