@@ -42,7 +42,7 @@ body>main{
   }
   body>main>aside{
     grid-area: aside;
-    padding: 4.5em 0 0;
+    padding: 4.2em 0 0;
   }
 }
 @media (min-width:52em), print {
@@ -260,10 +260,10 @@ ul{
 .job-tags li:last-child:after{
   content: "";
 }
-
 /*
   Aside Layout *************************
 */
+
 /* Logo */
 body > main > aside > figure{
   margin: 0 0 1em;
@@ -314,22 +314,28 @@ body > main > aside > article h5{
 /* 
   Socialmedia Links ******************
 */
-body > main > aside a{
+body > main > aside footer a{
   display: inline-block;
   width:100%;
+  padding-bottom: .6em;
   line-height: 1.4em;
   font-weight: bold;
   text-decoration: none;
   color:var(--black);
 }
-body > main > aside a:hover{
-  text-decoration: none;
-  color:var(--gray-dark);
+body > main > aside footer a:hover{
+  text-decoration: underline;
+  color:var(--gray-medium);
 }
-body > main > aside a img{
+body > main > aside footer img{
   height: 1.4em;
   width:auto;
+  margin-right:.6em;
 }
+body > main > aside footer .printedlink{
+  font-size:.8em;
+}
+
 
 /*
   Profile Image, different in print mode (discarded) *******************
@@ -522,6 +528,11 @@ Print related styles
     padding: 0;
     border:0px solid var(--white);
   }
+
+  .description{
+    font-size:1em;
+  }
+
   /*Hide Links URL when print*/
   a[href]:after {
     content: none !important;
