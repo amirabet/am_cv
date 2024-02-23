@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.2.0 (2024-02-23)
+
+### Changed
+
+* English Translation
+
+## 2.1.0 (2024-02-20)
+
+### Added
+
+* Animated Skills bars
+
 ## 2.0.1 (2024-02-19)
 
 ### Fixed
