@@ -21,7 +21,7 @@ There is also no use of Javascript in the Modal for printing: only CSS is used.
 ## Further improvements
 Whenever you get into a project, opportunities for improvement appear ad-infinitum.
 Right now, areas where the project could advance would be:
-- Microformats, following this excellent tutorial from
+- Microformats, following this excellent tutorial from [Álvaro Montoro](https://alvaromontoro.com/blog/67866/developing-an-interactive-resume-with-html-and-css)
 - Make the dynamic content and translation easier using some HTML generator.
 - Convert the CSS to SCSS and offer a minified version.
 - Prepare some color version, configurable, for screen formats.
