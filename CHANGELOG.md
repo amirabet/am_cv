@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.1 (2024-02-23)
+
+### Changed
+
+* Catalan Translation
+
 ## 2.2.0 (2024-02-23)
 
 ### Changed
