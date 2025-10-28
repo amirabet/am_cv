@@ -92,7 +92,11 @@ $font-sizes: (
 }
 
 // Button mixin
-@mixin button($padding: space(sm) space(md), $font-size: get-font-size(xs), $border-radius: 0px) {
+@mixin button(
+  $padding: #{space(sm)} #{space(md)},
+  $font-size: get-font-size(xs),
+  $border-radius: 0px
+) {
   display: inline-block;
   cursor: pointer;
   border-radius: $border-radius;
@@ -126,9 +130,9 @@ $font-sizes: (
 
   &:hover,
   &:active {
-    background: $hover-bg or $bg-color;
-    color: $hover-text or $text-color;
-    border-color: $hover-border or $border-color;
+    background: if($hover-bg, $hover-bg, $bg-color);
+    color: if($hover-text, $hover-text, $text-color);
+    border-color: if($hover-border, $hover-border, $border-color);
   }
 }
 
@@ -507,7 +511,7 @@ p {
   @include button;
 
   &-mid {
-    @include button(space(md) 1.2em, get-font-size(base));
+    @include button(#{space(md)} 1.2em, get-font-size(base));
     line-height: 1.5em;
 
     .btn--icon {
