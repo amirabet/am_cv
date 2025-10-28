@@ -63,6 +63,7 @@
     "mocha": "^7.2.0",
     "modernizr": "3.11.2",
     "normalize.css": "8.0.1",
+    "prettier": "^3.6.2",
     "sass": "^1.93.2",
     "strip-json-comments": "^3.1.0"
   },
@@ -103,6 +104,9 @@
     "build:css": "sass build/scss/style.scss docs/css/style.css --style=compressed",
     "watch:css": "sass build/scss/style.scss docs/css/style.css --watch",
     "dev:css": "sass build/scss/style.scss docs/css/style.css --style=expanded --source-map",
+    "format": "prettier --write .",
+    "format:scss": "prettier --write \"build/scss/**/*.scss\"",
+    "format:check": "prettier --check .",
     "test": "gulp archive && mocha --require @babel/register --reporter spec --timeout 5000"
   },
   "version": "8.0.0"
