@@ -38,8 +38,7 @@
   "bugs": {
     "url": "https://github.com/h5bp/html5-boilerplate/issues"
   },
-  "bundleDependencies": false,
-  "dependencies": {},
+  "bundleDependencies": [],
   "deprecated": false,
   "description": "A professional front-end template for building fast, robust, and adaptable web apps or sites.",
   "devDependencies": {
@@ -64,6 +63,7 @@
     "mocha": "^7.2.0",
     "modernizr": "3.11.2",
     "normalize.css": "8.0.1",
+    "sass": "^1.93.2",
     "strip-json-comments": "^3.1.0"
   },
   "engines": {
@@ -100,6 +100,9 @@
   },
   "scripts": {
     "build": "gulp build",
+    "build:css": "sass build/scss/style.scss docs/css/style.css --style=compressed",
+    "watch:css": "sass build/scss/style.scss docs/css/style.css --watch",
+    "dev:css": "sass build/scss/style.scss docs/css/style.css --style=expanded --source-map",
     "test": "gulp archive && mocha --require @babel/register --reporter spec --timeout 5000"
   },
   "version": "8.0.0"

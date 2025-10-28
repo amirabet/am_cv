@@ -1,0 +1,776 @@
+// ===============================================
+// SCSS Variables & Configuration
+// ===============================================
+
+@use "sass:map";
+
+// Color palette
+$colors: (
+  "black": #000,
+  "white": #FFF,
+  "gray-dark": #333,
+  "gray-medium": #666,
+  "gray-light": #AAA,
+  "gray-light-b": #CCC,
+  "gray-ultralight": #DDD,
+  "modal-background": rgba(0, 0, 0, 0.55),
+  "selection-bg": #D8D7BA
+);
+
+// Breakpoints
+$breakpoints: (
+  xs: 26em,
+  sm: 38em,
+  md: 52em
+);
+
+// Spacing scale
+$spacing: (
+  xs: 0.3em,
+  sm: 0.6em,
+  md: 1em,
+  lg: 1.6em,
+  xl: 2.4em,
+  xxl: 4em
+);
+
+// Font sizes
+$font-sizes: (
+  xs: 0.8em,
+  sm: 0.9em,
+  base: 1em,
+  md: 1.1em,
+  lg: 1.4em,
+  xl: 2em
+);
+
+// ===============================================
+// SCSS Functions & Mixins
+// ===============================================
+
+// Color function - handles both quoted and unquoted keys
+@function color($name) {
+  // Try quoted key first
+  @if map.has-key($colors, "#{$name}") {
+    @return map.get($colors, "#{$name}");
+  }
+  // Fallback to unquoted key
+  @if map.has-key($colors, $name) {
+    @return map.get($colors, $name);
+  }
+  @warn "Color #{$name} not found in color map";
+  @return null;
+}
+
+// Breakpoint mixin
+@mixin breakpoint($size) {
+  @if map.has-key($breakpoints, $size) {
+    @media (min-width: map.get($breakpoints, $size)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$size}";
+  }
+}
+
+// Print media query mixin
+@mixin print {
+  @media print {
+    @content;
+  }
+}
+
+// Spacing function
+@function space($size) {
+  @return map.get($spacing, $size);
+}
+
+// Font size function (renamed to avoid conflicts)
+@function get-font-size($size) {
+  @return map.get($font-sizes, $size);
+}
+
+// Button mixin
+@mixin button($padding: space(sm) space(md), $font-size: get-font-size(xs), $border-radius: 0px) {
+  display: inline-block;
+  cursor: pointer;
+  border-radius: $border-radius;
+  text-decoration: none;
+  padding: $padding;
+  font-size: $font-size;
+  line-height: 1.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 3px;
+  transition: all 0.4s ease-in-out;
+
+  .icon {
+    height: 1.2em;
+    width: auto;
+  }
+}
+
+// Button variant mixin
+@mixin button-variant($bg-color, $text-color, $border-color, $hover-bg: null, $hover-text: null, $hover-border: null) {
+  background: $bg-color;
+  color: $text-color;
+  border: 2px solid $border-color;
+
+  &:hover,
+  &:active {
+    background: $hover-bg or $bg-color;
+    color: $hover-text or $text-color;
+    border-color: $hover-border or $border-color;
+  }
+}
+
+// Grid template mixin
+@mixin grid-template($columns, $rows: auto, $gap: 0, $areas: null) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+  
+  @if $gap != 0 {
+    grid-gap: $gap;
+  }
+  
+  @if $areas {
+    grid-template-areas: $areas;
+  }
+}
+
+// Absolute centering mixin
+@mixin center-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Flexbox centering mixin
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Text styling mixin
+@mixin text-style($size: get-font-size(base), $weight: normal, $color: color(black), $margin: 0) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+  margin: $margin;
+}
+
+// Animation mixin for skill levels
+@mixin skill-level-animation($level) {
+  $width: $level * 20%;
+  $duration: $level * 0.5s;
+  
+  &:after {
+    animation: level#{$level} $duration linear 4s 1 normal forwards;
+  }
+}
+
+// Level bar mixin
+@mixin level-bar {
+  position: relative;
+  box-sizing: border-box;
+  border-bottom: 2px solid color(gray-light-b);
+
+  &:after {
+    content: " ";
+    position: absolute;
+    box-sizing: border-box;
+    width: 0%;
+    left: 0;
+    bottom: -2px;
+    border-bottom: 2px solid color(black);
+  }
+}
+
+// Modal mixin
+@mixin modal-base {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+
+  &:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+// ===============================================
+// CSS Custom Properties (for browser compatibility)
+// ===============================================
+:root {
+  @each $name, $value in $colors {
+    --#{$name}: #{$value};
+  }
+}
+
+// ===============================================
+// Base Styles
+// ===============================================
+html {
+  font-family: monospace;
+}
+
+body {
+  background: color(gray-ultralight);
+  padding: space(sm);
+  font-family: monospace;
+}
+
+// ===============================================
+// Layout - CSS Grid
+// ===============================================
+body > main {
+  @include grid-template(auto, auto, 0, (
+    "header"
+    "section"
+    "aside"
+  ));
+  
+  max-width: 68em;
+  margin: 0 auto;
+  padding: space(lg);
+  background: color(white);
+  border: 1px solid color(gray-light-b);
+  box-shadow: 3px 3px 3px color(gray-light);
+
+  > header {
+    grid-area: header;
+  }
+
+  > section {
+    grid-area: section;
+  }
+
+  > aside {
+    grid-area: aside;
+    padding-bottom: space(md);
+  }
+
+  // Two columns layout
+  @include breakpoint(sm) {
+    grid-template-columns: auto 10em;
+    grid-column-gap: space(md);
+    grid-template-areas: 
+      "header aside"
+      "section aside";
+
+    > aside {
+      padding: 4.2em 0 0;
+    }
+  }
+
+  @include breakpoint(md) {
+    grid-template-columns: auto 14em;
+    grid-column-gap: 3em;
+  }
+
+  @include print {
+    @include breakpoint(md) {
+      grid-template-columns: auto 14em;
+      grid-column-gap: 3em;
+    }
+  }
+}
+
+// ===============================================
+// Modal Styles
+// ===============================================
+.modal-window {
+  @include modal-base;
+  background-color: color(modal-background);
+
+  > div {
+    @include center-absolute;
+    width: 420px;
+    max-width: 90%;
+    padding: space(lg);
+    background: color(white);
+  }
+
+  header {
+    font-weight: bold;
+  }
+
+  h1 {
+    @include text-style(150%, bold, color(black), 0 0 15px);
+  }
+}
+
+.modal-close {
+  @include text-style(80%, normal, color(gray-light));
+  line-height: 50px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none;
+
+  &:hover {
+    color: color(black);
+  }
+}
+
+// ===============================================
+// Typography
+// ===============================================
+%heading-base {
+  margin: 0;
+}
+
+h1 {
+  @extend %heading-base;
+  @include text-style(get-font-size(xl), bold, color(black));
+  line-height: 1;
+}
+
+h2 {
+  @extend %heading-base;
+  @include text-style(get-font-size(lg), normal, color(gray-medium), 0 0 0.37em 0);
+}
+
+h3 {
+  @extend %heading-base;
+  @include text-style(get-font-size(md), 400, color(black));
+  display: inline-block;
+}
+
+h4 {
+  @extend %heading-base;
+  @include text-style(get-font-size(base), normal, color(gray-medium), 0 0 0.3em);
+}
+
+h5 {
+  @extend %heading-base;
+  @include text-style(get-font-size(base), normal, color(black), space(sm) 0 0);
+  font-style: italic;
+}
+
+h6 {
+  @extend %heading-base;
+  @include text-style(get-font-size(base), normal, color(black));
+}
+
+p {
+  margin: 0 0 space(sm) 0;
+
+  header + & {
+    margin: 0 0 0.8em 0;
+  }
+}
+
+// Responsive typography
+@include breakpoint(sm) {
+  h1 {
+    font-size: get-font-size(xl);
+  }
+
+  h2 {
+    font-size: get-font-size(lg);
+    margin: 0 0 0.47em 0;
+  }
+}
+
+@include print {
+  @include breakpoint(sm) {
+    h1 {
+      font-size: get-font-size(xl);
+    }
+
+    h2 {
+      font-size: get-font-size(lg);
+      margin: 0 0 0.47em 0;
+    }
+  }
+}
+
+// ===============================================
+// Lists
+// ===============================================
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: get-font-size(sm);
+  list-style-type: "· ";
+  list-style-position: inside;
+}
+
+.description {
+  margin-top: 1.1em;
+  font-size: get-font-size(md);
+}
+
+.job-tags {
+  list-style-type: none;
+  font-size: get-font-size(xs);
+  margin-top: space(sm);
+
+  li {
+    display: inline-block;
+    font-weight: bold;
+
+    &:after {
+      content: " ·";
+    }
+
+    &:last-child:after {
+      content: "";
+    }
+  }
+}
+
+// ===============================================
+// Layout Components
+// ===============================================
+
+// Main section
+body > main > section > article {
+  padding-top: space(lg);
+
+  > header > h3 > img {
+    height: 1.1em;
+    width: auto;
+    margin-right: space(sm);
+  }
+}
+
+// Aside section
+body > main > aside {
+  // Profile image
+  > figure {
+    margin: 0 0 space(md);
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 50%;
+
+      &.no-print {
+        border-radius: 50%;
+      }
+
+      &.only-print {
+        border-radius: 6px;
+        filter: brightness(0.9);
+      }
+    }
+  }
+
+  // Skills articles
+  > article {
+    padding-bottom: 2em;
+
+    h4 {
+      @include text-style(get-font-size(md), bold, color(black));
+    }
+
+    h5 {
+      @include text-style(get-font-size(sm), normal, color(gray-dark));
+      font-style: normal;
+    }
+  }
+
+  // Social media links
+  footer {
+    a {
+      display: inline-block;
+      width: 100%;
+      padding-bottom: space(sm);
+      line-height: 1.4em;
+      font-weight: bold;
+      text-decoration: none;
+      color: color(black);
+
+      &:hover {
+        text-decoration: underline;
+        color: color(gray-medium);
+      }
+    }
+
+    img {
+      height: 1.4em;
+      width: auto;
+      margin-right: space(sm);
+    }
+
+    .printedlink {
+      font-size: get-font-size(xs);
+    }
+  }
+}
+
+// ===============================================
+// Components
+// ===============================================
+
+// Skill levels
+.level {
+  @include level-bar;
+
+  // Generate level classes with animation
+  @for $i from 1 through 5 {
+    &--#{$i} {
+      @include skill-level-animation($i);
+    }
+  }
+}
+
+// Buttons
+.btn {
+  @include button;
+
+  &-mid {
+    @include button(space(md) 1.2em, get-font-size(base));
+    line-height: 1.5em;
+
+    .btn--icon {
+      height: 1.5em;
+    }
+  }
+
+  &-big {
+    @include button(1.2em 1.5em, get-font-size(lg));
+    line-height: 2em;
+
+    .btn--icon {
+      height: 2em;
+    }
+  }
+
+  &-light {
+    @include button-variant(
+      transparent, 
+      #555, 
+      color(gray-medium), 
+      color(white), 
+      color(black)
+    );
+  }
+
+  &-dark {
+    @include button-variant(
+      color(gray-dark), 
+      color(gray-light-b), 
+      #333, 
+      color(black), 
+      color(white), 
+      color(black)
+    );
+  }
+}
+
+// ===============================================
+// Animations
+// ===============================================
+
+// Typewriter effect
+@include breakpoint(sm) {
+  .typewriter {
+    display: inline-flex;
+
+    span {
+      word-break: break-all;
+      height: 1.2em;
+      width: 0%;
+      overflow: hidden;
+      animation: typewriter 3s linear 2s 1 normal forwards;
+
+      &:before {
+        content: " ";
+        display: inline-block;
+      }
+
+      &.typewriter--first {
+        animation-duration: 2s;
+        animation-delay: 1s;
+      }
+    }
+  }
+}
+
+@keyframes typewriter {
+  90%, 100% {
+    width: 100%;
+  }
+}
+
+// Skill level animations
+@for $i from 1 through 5 {
+  @keyframes level#{$i} {
+    90%, 100% {
+      width: #{$i * 20%};
+    }
+  }
+}
+
+// ===============================================
+// Responsive Design
+// ===============================================
+body > footer {
+  max-width: 72em;
+  margin: space(lg) auto;
+}
+
+@include breakpoint(xs) {
+  body {
+    padding: 1.2em;
+
+    > main {
+      padding: space(xl);
+    }
+
+    > footer {
+      margin: space(xl) auto;
+    }
+  }
+}
+
+@include breakpoint(sm) {
+  body {
+    padding: 2em;
+
+    > main {
+      padding: space(xxl);
+    }
+
+    > footer {
+      margin: space(xxl) auto;
+    }
+  }
+}
+
+@include print {
+  @include breakpoint(sm) {
+    body {
+      padding: 2em;
+
+      > main {
+        padding: space(xxl);
+      }
+
+      > footer {
+        margin: space(xxl) auto;
+      }
+    }
+  }
+}
+
+// Mobile responsive adjustments
+@media screen and (max-width: map.get($breakpoints, sm)) {
+  body > main > aside {
+    > figure {
+      text-align: center;
+
+      img {
+        width: 12em;
+      }
+    }
+
+    a {
+      width: 25%;
+      padding-left: 0;
+      float: left;
+    }
+  }
+}
+
+@media screen and (max-width: map.get($breakpoints, xs)) {
+  body > main > aside {
+    > figure img {
+      width: 9em;
+    }
+
+    a {
+      width: 50%;
+      text-align: center;
+    }
+  }
+}
+
+// ===============================================
+// Utility Classes
+// ===============================================
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+// ===============================================
+// Selection Styles
+// ===============================================
+::-moz-selection {
+  background: color(selection-bg);
+  color: color(black);
+}
+
+::selection {
+  background: color(selection-bg);
+  color: color(black);
+}
+
+// ===============================================
+// Print Styles
+// ===============================================
+.only-print { display: none; }
+
+@include print {
+  @page {
+    size: auto;
+    margin: 0.4in;
+  }
+
+  body {
+    background: color(white);
+    padding: 0;
+
+    > main {
+      width: 100%;
+      max-width: auto;
+      margin: 0;
+      padding: 0;
+      border: 0px solid color(white);
+    }
+  }
+
+  .description {
+    font-size: get-font-size(base);
+  }
+
+  a[href]:after {
+    content: none !important;
+  }
+
+  .no-print { display: none !important; }
+  .only-print { display: block !important; }
+
+  body > main > aside a {
+    padding-left: 0;
+  }
+
+  .typewriter span,
+  .typewriter--start span {
+    width: 100% !important;
+  }
+
+  // Static level widths for print
+  @for $i from 1 through 5 {
+    .level--#{$i}:after {
+      width: #{$i * 20%};
+    }
+  }
+}
