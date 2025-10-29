@@ -1,0 +1,30 @@
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": false,
+  "quoteProps": "as-needed",
+  "trailingComma": "none",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "arrowParens": "avoid",
+  "printWidth": 80,
+  "endOfLine": "crlf",
+  "overrides": [
+    {
+      "files": "*.scss",
+      "options": {
+        "tabWidth": 2,
+        "printWidth": 100,
+        "singleQuote": false
+      }
+    },
+    {
+      "files": "*.css",
+      "options": {
+        "tabWidth": 2,
+        "printWidth": 100
+      }
+    }
+  ]
+}

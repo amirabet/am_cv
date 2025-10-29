@@ -1,64 +1,192 @@
-/* ****************************** 
-Page configuration
-****************************** * /
-html {
-}
-body{
-}
-/*
-  Sections Layout with CSS grid!
-*/
-body>main{
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-}
-body>main>header{
-  grid-area: header;
-}
-body>main>section{
-  grid-area: section;
-}
-body>main>aside{
-  grid-area: aside;
-  padding-bottom:1em;
-}
-/* Grid Areas */
-body>main{
-  grid-template-areas: 
-    "header"
-    "section"
-    "aside";
-}
-/* Two columns layout, has to specify "print" mediaquery despite min-width */
-@media (min-width:38em) {
-  body>main{
-    grid-template-columns: auto 10em;
-    grid-column-gap: 1em;
-    grid-template-areas: 
-      "header aside"
-      "section aside ";
-    
-  }
-  body>main>aside{
-    grid-area: aside;
-    padding: 4.2em 0 0;
-  }
-}
-@media (min-width:52em), print {
-  body>main{
-    grid-template-columns: auto 14em;
-    grid-column-gap: 3em;
-  }
+:root {
+  --black: #000;
+  --white: #fff;
+  --gray-dark: #333;
+  --gray-medium: #666;
+  --gray-mediumlight: #999;
+  --gray-light: #aaa;
+  --gray-light-b: #ccc;
+  --gray-ultralight: #ddd;
+  --modal-background: rgba(0, 0, 0, 0.55);
+  --selection-bg: #d8d7ba;
+  --blue-primary: #3885b8;
 }
 
-/**********************
-ONLY CSS MODAL
-https://codepen.io/timothylong/pen/HhAer
-***********************/
+html {
+  font-family: monospace;
+}
+
+body {
+  background: linear-gradient(135deg, #ddd 0%, #aaa 70%);
+  padding: 0.6em;
+  font-family: monospace;
+}
+
+body > main {
+  max-width: 68em;
+  margin: 0 auto;
+  padding: 1.6em;
+  background: linear-gradient(135deg, #fff 50%, #ddd 100%);
+  border: 1px solid #666;
+  border-top-color: #aaa;
+  border-left-color: #aaa;
+  box-shadow: 3px 3px 3px #666;
+}
+
+body > main > .container > header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contact-info {
+  color: #666;
+  font-size: 0.95em;
+  margin-bottom: 1em;
+}
+
+.contact-info a {
+  color: #3885b8;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.summary {
+  font-size: 1em;
+  color: #666;
+  text-align: justify;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+  padding-bottom: 1em;
+  padding-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* Sections */
+section {
+  margin-bottom: 2em;
+}
+
+/* Job Experience */
+.job,
+.degree {
+  margin-bottom: 1.5em;
+}
+
+.job-header,
+.degree-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75em;
+}
+
+.job-title,
+.degree-title {
+  flex: 1;
+}
+
+.job-meta,
+.degree-meta {
+  text-align: right;
+  min-width: 16em;
+  margin-left: 1.25em;
+}
+
+.position,
+.degree-name {
+  font-weight: 600;
+  color: #666;
+  font-size: 1.05em;
+}
+
+.location {
+  color: #666;
+  font-size: 1em;
+  margin-bottom: 0.2em;
+}
+
+.dates {
+  color: #666;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+.degree-details {
+  color: #666;
+  font-size: 0.95em;
+  margin-top: 0.5em;
+  text-align: justify;
+}
+
+/* Lists */
+ul {
+  list-style-position: outside;
+  margin-left: 1.25em;
+  margin-top: 0.5em;
+}
+
+li {
+  margin-bottom: 0.5em;
+  text-align: justify;
+}
+
+.certifications ul,
+.skills ul {
+  margin-left: 1.5em;
+}
+
+/* Skills */
+.skill-group {
+  margin-bottom: 1.25em;
+}
+
+.skill-group h3 {
+  font-size: 1.1em;
+  color: #333;
+  margin-bottom: 0.5em;
+}
+
+.skill-group ul {
+  margin-left: 1.25em;
+}
+
+.skill-group li {
+  margin-bottom: 0.4em;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 1.25em;
+  }
+  h1 {
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  .job-header,
+  .degree-header {
+    flex-direction: column;
+  }
+  .job-meta,
+  .degree-meta {
+    text-align: left;
+    margin-left: 0;
+    margin-top: 0.2em;
+    min-width: auto;
+  }
+  .dates {
+    margin-top: 0.2em;
+  }
+}
 .modal-window {
   position: fixed;
-  background-color: var(--modal-background);
   top: 0;
   right: 0;
   bottom: 0;
@@ -74,28 +202,35 @@ https://codepen.io/timothylong/pen/HhAer
   opacity: 1;
   pointer-events: auto;
 }
+.modal-window {
+  background-color: rgba(0, 0, 0, 0.55);
+}
 .modal-window > div {
-  width: 420px;
-  max-width: 90%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 420px;
+  max-width: 90%;
   padding: 1.6em;
-  background: var(--white);
+  background: #fff;
 }
 .modal-window header {
   font-weight: bold;
 }
 .modal-window h1 {
-  font-size: 150%;
-  margin: 0 0 15px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #000;
+  margin: 0 0 1em;
 }
 
 .modal-close {
-  color: var(--gray-light);
+  font-size: 0.8em;
+  font-weight: normal;
+  color: #aaa;
+  margin: 0;
   line-height: 50px;
-  font-size: 80%;
   position: absolute;
   right: 0;
   text-align: center;
@@ -104,482 +239,389 @@ https://codepen.io/timothylong/pen/HhAer
   text-decoration: none;
 }
 .modal-close:hover {
-  color: var(--black);
-}
-/* UL styles */
-ul{
-  padding:0;
-  list-style: none;
+  color: #000;
 }
 
-
-/* ****************************** 
-CUSTOM STYLES 1 - Default
-****************************** */
-/*
-  Page Configuration
-*/
-html{
-  font-family: monospace;
-}
-body {
-  background:var(--gray-ultralight);
-  padding: .6em;
-  font-family: monospace;
-}
-body>main{
-  max-width: 68em;
-  margin: 0 auto;
-  padding: 1.6em;
-  background: var(--white);
-  border:1px solid var(--gray-light-b);
-  box-shadow: 3px 3px 3px var(--gray-light);
-}
-body>main>section>article>header>h3>img{
-  height: 1.1em;
-  width:auto;
-  margin-right:.6em;
-}
-body>footer{
-  max-width: 72em;
-  margin: 1.6em auto;
-}
-@media screen and (min-width:26em){
-  body {
-    padding: 1.2em;
-  }
-  body>main{
-    padding: 2.4em;
-  }
-  body>footer{
-    margin: 2.4em auto;
-  }
-}
-@media (min-width:38em), print{
-  body {
-    padding: 2em;
-  }
-  body>main{
-    padding: 4em;
-  }
-  body>footer{
-    margin: 4em auto;
-  }
-}
-/*
-  Headings and Paragraph
-*/
-h1{
-  font-size: 2em;
+h6, h5, h4, h3, h2, h1 {
   margin: 0;
-  line-height: 1;
 }
-h2{
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+  line-height: 1.2;
+}
+
+h2 {
   font-size: 1.4em;
   font-weight: normal;
-  margin: 0 0 0.37em 0;
-  color:var(--gray-medium);  
+  color: #666;
+  margin: 0 0 0.4em 0;
 }
 
-h3{
-  display:inline-block;
+h3 {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #000;
   margin: 0;
-  font-weight: 400;
-  font-size: 1.15em;
+  display: inline-block;
 }
 
-h4{
-  margin: 0 0 0.3em;
+h4 {
   font-size: 1em;
   font-weight: normal;
-  color:var(--gray-medium);
+  color: #666;
+  margin: 0 0 0.4em;
 }
-h5{
+
+h5 {
   font-size: 1em;
-  margin: .6em 0 0;
   font-weight: normal;
+  color: #000;
+  margin: 0.6em 0 0;
   font-style: italic;
 }
-h6{
+
+h6 {
   font-size: 1em;
+  font-weight: normal;
+  color: #000;
   margin: 0;
 }
-p{
-  margin: 0 0 .6em 0;
+
+p {
+  margin: 0 0 0.6em 0;
 }
-header + p{
-  margin: 0 0 .8em 0;
+header + p {
+  margin: 0 0 0.75em 0;
 }
-@media (min-width:38em), print{
-  h1{
+
+@media (min-width: 38em) {
+  h1 {
     font-size: 2em;
-    margin: 0;
-    
   }
-  h2{
+  h2 {
     font-size: 1.4em;
-    margin: 0 0 0.47em 0;
+    margin: 0 0 0.5em 0;
   }
 }
-/*
-  Main Section content Layout *******************
-*/
-/* One job */
-body > main > section > article{
-  padding-top: 1.6em;
-}
-
-/* 
-  Unordered Lists *******************************
-*/
-ul{
-  margin:0;
-  font-size: .9em;
-  list-style-type:"· ";
-  list-style-position: inside;
-}
-.description{
-  margin-top:1.1em;
-  font-size: 1.1em;
-}
-.job-tags{
-  list-style-type: none;
-  font-size: .8em;
-  margin-top:.6em;
-}
-
-.job-tags li{
+.btn {
   display: inline-block;
-  font-weight: bold;
-}
-
-.job-tags li:after{
-  content: " ·";
-}
-
-.job-tags li:last-child:after{
-  content: "";
-}
-/*
-  Aside Layout *************************
-*/
-
-/* Logo */
-body > main > aside > figure{
-  margin: 0 0 1em;
-}
-body > main > aside > figure img{
-  max-width: 100%;
-  height: auto;
-  border-radius: 50%;
-}
-body > main > aside > figure img.no-print{
-  border-radius: 50%;
-}
-body > main > aside > figure img.only-print{
-  border-radius: 6px;
-  filter:brightness(0.9);
-}
-
-/* Table of Skills */
-body > main > aside > article{
-  padding-bottom: 2em;
-}
-body > main > aside > article h4{
-  font-weight: bold;
-  font-size: 1.1em;
-  color:var(--black);
-}
-body > main > aside > article h5{
-  font-weight: normal;
-  color:var(--gray-dark);
-  font-size: .9em;
-  font-style: normal;
-}
-.level{
-  position: relative;
-  box-sizing: border-box;
-  border-bottom:2px solid var(--gray-light-b);
-}
-.level:after{
-  content: " ";
-  position: absolute;
-  box-sizing: border-box;
-  width: 0%;
-  left:0;
-  bottom:-2px;
-  border-bottom:2px solid var(--black);
-}
-
-/* 
-  Socialmedia Links ******************
-*/
-body > main > aside footer a{
-  display: inline-block;
-  width:100%;
-  padding-bottom: .6em;
-  line-height: 1.4em;
-  font-weight: bold;
-  text-decoration: none;
-  color:var(--black);
-}
-body > main > aside footer a:hover{
-  text-decoration: underline;
-  color:var(--gray-medium);
-}
-body > main > aside footer img{
-  height: 1.4em;
-  width:auto;
-  margin-right:.6em;
-}
-body > main > aside footer .printedlink{
-  font-size:.8em;
-}
-
-
-/*
-  Profile Image, different in print mode (discarded) *******************
-*/
-@media screen and (max-width:38em){
-  body > main > aside > figure{
-    text-align: center;
-  }
-  body > main > aside > figure img{
-    width: 12em;
-  }
-  body > main > aside a{
-    width:25%;
-    padding-left:0;
-    float: left;
-  }
-}
-@media screen and (max-width:26em){
-  body > main > aside > figure img{
-    width: 9em;
-  }
-  body > main > aside a{
-    width:50%;
-    text-align: center;
-  }
-}
-/*
- BUTTONS!
-*/
-.btn{
-  display:inline-block;
-	cursor: pointer;
+  cursor: pointer;
   border-radius: 0px;
   text-decoration: none;
-  padding: .8em 1em;
-  font-size: .8em;
+  padding: 0.6em 1em;
+  font-size: 0.8em;
   line-height: 1.2em;
   text-transform: uppercase;
-  font-weight:700;
+  font-weight: 700;
   letter-spacing: 3px;
-  transition: all .4s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-.btn .icon{
+.btn:hover {
+  transform: scale(1.02);
+}
+.btn:active {
+  transform: scale(1);
+}
+.btn .icon {
   height: 1.2em;
-  width:auto;
-
+  width: auto;
 }
 .btn-mid {
-    padding: 1em 1.2em;
-    font-size: 1em;
-    line-height: 1.5em;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 0px;
+  text-decoration: none;
+  padding: 1em 1.2em;
+  font-size: 1em;
+  line-height: 1.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 3px;
+  transition: all 0.2s ease-in-out;
 }
-.btn-mid .btn--icon{
-  height: 1.5em;  
+.btn-mid:hover {
+  transform: scale(1.02);
+}
+.btn-mid:active {
+  transform: scale(1);
+}
+.btn-mid .icon {
+  height: 1.2em;
+  width: auto;
+}
+.btn-mid {
+  line-height: 1.5em;
+}
+.btn-mid .btn--icon {
+  height: 1.5em;
 }
 .btn-big {
-    padding: 1.2em 1.5em;
-    font-size: 1.4em;
-    line-height: 2em;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 0px;
+  text-decoration: none;
+  padding: 1.2em 1.5em;
+  font-size: 1.4em;
+  line-height: 1.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 3px;
+  transition: all 0.2s ease-in-out;
 }
-.btn-big .btn--icon{
-  height: 2em;  
+.btn-big:hover {
+  transform: scale(1.02);
 }
-.btn-light{
-    border:2px solid var(--gray-medium);
-    background: transparent;
-    color: #555;
+.btn-big:active {
+  transform: scale(1);
 }
-.btn-light:hover,.btn-light:active{
-    background: var(--white);
-    color: var(--black);
+.btn-big .icon {
+  height: 1.2em;
+  width: auto;
 }
-.btn-dark{
-    border:2px  solid #333;
-    background: var(--gray-dark);
-    color: var(--gray-light-b);
+.btn-big {
+  line-height: 2em;
 }
-.btn-dark:hover, .btn-dark:active{
-    border:solid 2px var(--black);
-    background: var(--black);
-    color: var(--white);
+.btn-big .btn--icon {
+  height: 2em;
 }
-/* 
-Typewriter effect. Genius!
-https://codepen.io/t_afif/pen/MWoabrq
-*/
-@media (min-width:38em) {
+.btn-light {
+  background: transparent;
+  color: #666;
+  border: 2px solid #666;
+}
+.btn-light:hover, .btn-light:active {
+  background: #fff;
+  color: #000;
+  border-color: #666;
+}
+.btn-dark {
+  background: #333;
+  color: #ccc;
+  border: 2px solid #333;
+}
+.btn-dark:hover, .btn-dark:active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+@media (min-width: 38em) {
   .typewriter {
-    display:inline-flex;
+    display: inline-flex;
   }
-  
   .typewriter span {
     word-break: break-all;
     height: 1.2em;
-    width:0%;
+    width: 0%;
     overflow: hidden;
-    animation:typewriter 3s linear 2s 1 normal forwards;
+    animation: typewriter 3s linear 2s 1 normal forwards;
   }
-
   .typewriter span:before {
-    content:" ";
-    display:inline-block;
+    content: " ";
+    display: inline-block;
   }
-
   .typewriter span.typewriter--first {
     animation-duration: 2s;
-    animation-delay:1s;
+    animation-delay: 1s;
   }
 }
-
-@keyframes typewriter{
-  90%,100% {width:100%}
+@keyframes typewriter {
+  90%, 100% {
+    width: 100%;
+  }
+}
+body > footer {
+  max-width: 72em;
+  margin: 1.6em auto;
 }
 
-/* Skills level animated bars */
-.level--1:after{
-  animation:level1 0.5s linear 4s 1 normal forwards;
+@media (min-width: 26em) {
+  body {
+    padding: 1.2em;
+  }
+  body > main {
+    padding: 2.4em;
+  }
+  body > footer {
+    margin: 2.4em auto;
+  }
 }
-.level--2:after{
-  animation:level2 1s linear 4s 1 normal forwards;
+@media (min-width: 38em) {
+  body {
+    padding: 2em;
+  }
+  body > main {
+    padding: 4em;
+  }
+  body > footer {
+    margin: 4em auto;
+  }
 }
-.level--3:after{
-  animation:level3 1.5s linear 4s 1 normal forwards;
-}
-.level--4:after{
-  animation:level4 2s linear 4s 1 normal forwards;
-}
-.level--5:after{
-  animation:level5 2.5s linear 4s 1 normal forwards;
-}
-
-@keyframes level1{
-  90%,100% {width:20%}
-}
-@keyframes level2{
-  90%,100% {width:40%}
-}
-@keyframes level3{
-  90%,100% {width:60%}
-}
-@keyframes level4{
-  90%,100% {width:80%}
-}
-@keyframes level5{
-  90%,100% {width:100%}
-}
-/* ****************************** 
-Common CSS helpers
-****************************** */
-.text-center{
+.text-center {
   text-align: center;
 }
-.text-left{
+
+.text-left {
   text-align: left;
 }
-.text-right{
+
+.text-right {
   text-align: right;
 }
-/* ****************************** 
-Selection
-****************************** */
+
 ::-moz-selection {
-  background: #D8D7BA;
-  color:#000;
+  background: #d8d7ba;
+  color: #000;
 }
 
 ::selection {
-  background: #D8D7BA;
-  color:#000;
+  background: #d8d7ba;
+  color: #000;
 }
-/* ****************************** 
-Print related styles  
-****************************** */
-.only-print{display:none;}
+
+.only-print {
+  display: none;
+}
+
 @media print {
-  /* Browser page configuration */
-  @page{
+  @page {
     size: auto;
-    margin: 0.4in;
+    margin: 0.1in 0.5in;
   }
-  /* Base styles */
   body {
-    background:var(--white);
+    background: #fff;
     padding: 0;
+    font-size: 10pt;
+    line-height: 1.2;
   }
-  body>main{
+  body > main {
     width: 100%;
-    max-width: auto;
-    margin: 0;
+    max-width: 100%;
     padding: 0;
-    border:0px solid var(--white);
+    border: 0px solid #fff;
   }
-
-  .description{
-    font-size:1em;
+  .container {
+    box-shadow: none;
+    padding: 0;
   }
-
-  /*Hide Links URL when print*/
+  a {
+    color: #333;
+    text-decoration: none;
+  }
   a[href]:after {
     content: none !important;
   }
-  /* Helper classes*/
-  .no-print{display:none!important;}
-  .only-print{display:block!important;}
-
-  
-  /* Remove left padding on sm links */
-  body > main > aside a{
-    padding-left:0;
+  header {
+    margin-bottom: 1em;
   }
-
-  /* Don't use typewriter effect in print mode */
-  .typewriter span, .typewriter--start span{
-    width:100%!important;
+  h1 {
+    font-size: 16pt !important;
+    margin-bottom: 0.3em !important;
   }
-
-  /* Remove animation effect on level */
-  .level--1:after{
-  width: 20%;
+  h2 {
+    font-size: 10pt !important;
+    margin: 0.8em 0 0.4em 0 !important;
   }
-  .level--2:after{
-    width: 40%;
+  h3 {
+    font-size: 9pt !important;
+    margin-bottom: 0.2em !important;
   }
-  .level--3:after{
-    width: 60%;
+  .summary {
+    font-size: 9pt !important;
+    padding: 0.6em 0;
+    margin-bottom: 0.8em;
   }
-  .level--4:after{
-    width: 80%;
+  .contact-info {
+    font-size: 8pt;
+    margin-bottom: 0.6em;
   }
-  .level--5:after{
-    width: 100%;
+  section {
+    margin-bottom: 1.2em;
+  }
+  .job,
+  .degree {
+    margin-bottom: 1.2em;
+  }
+  .job-header,
+  .degree-header {
+    margin-bottom: 0.4em;
+  }
+  .position,
+  .degree-name {
+    font-size: 9pt;
+  }
+  .location {
+    font-size: 8pt;
+    margin-bottom: 0.1em;
+  }
+  .dates {
+    font-size: 7pt;
+  }
+  .degree-details {
+    font-size: 8pt;
+    margin-top: 0.3em;
+  }
+  ul {
+    margin-left: 1em;
+    margin-top: 0.3em;
+  }
+  li {
+    margin-bottom: 0.25em;
+    font-size: 8pt;
+    line-height: 1.25;
+  }
+  .skill-group {
+    margin-bottom: 0.8em;
+  }
+  .skill-group h3 {
+    font-size: 9pt;
+    margin-bottom: 0.3em;
+  }
+  .skill-group ul {
+    margin-left: 1em;
+  }
+  .skill-group li {
+    margin-bottom: 0.2em;
+    font-size: 8pt;
+  }
+  .certifications ul {
+    margin-left: 1em;
+  }
+  .certifications li {
+    font-size: 8pt;
+    margin-bottom: 0.2em;
+  }
+}
+@media print and (min-width: 38em) {
+  h1 {
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 1.4em;
+    margin: 0 0 0.5em 0;
+  }
+  body {
+    padding: 2em;
+  }
+  body > footer {
+    margin: 4em auto;
+  }
+}
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .only-print {
+    display: block !important;
+  }
+  .typewriter span,
+  .typewriter--start span {
+    width: 100% !important;
   }
 }
 
-/* CSS vars */
-:root{
-
-  /*Colors*/
-  --black:#000;
-  --white:#FFF;
-  --gray-dark:#333;
-  --gray-medium:#666;
-  --gray-light:#AAA;
-  --gray-light-b:#CCC;
-  --gray-ultralight:#DDD;
-  --modal-background:rgba(0, 0, 0, 0.55);
-}
+/*# sourceMappingURL=style.css.map */
