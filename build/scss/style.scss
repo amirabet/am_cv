@@ -10,6 +10,7 @@ $colors: (
   "white": #fff,
   "gray-dark": #333,
   "gray-medium": #666,
+  "gray-mediumlight": #999,
   "gray-light": #aaa,
   "gray-light-b": #ccc,
   "gray-ultralight": #ddd,
@@ -107,7 +108,15 @@ $font-sizes: (
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 3px;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(1);
+  }
 
   .icon {
     height: 1.2em;
@@ -196,7 +205,7 @@ html {
 }
 
 body {
-  background: color(gray-ultralight);
+  background: linear-gradient(135deg, color(gray-ultralight) 0%, color(gray-light) 70%);
   padding: space(sm);
   font-family: monospace;
 }
@@ -208,9 +217,11 @@ body > main {
   max-width: 68em;
   margin: 0 auto;
   padding: space(lg);
-  background: color(white);
-  border: 1px solid color(gray-light-b);
-  box-shadow: 3px 3px 3px color(gray-light);
+  background: linear-gradient(135deg, color(white) 50%, color(gray-ultralight) 100%);
+  border: 1px solid color(gray-medium);
+  border-top-color: color(gray-light);
+  border-left-color: color(gray-light);
+  box-shadow: 3px 3px 3px color(gray-medium);
 }
 
 body > main > .container > header {

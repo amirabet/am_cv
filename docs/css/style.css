@@ -3,6 +3,7 @@
   --white: #fff;
   --gray-dark: #333;
   --gray-medium: #666;
+  --gray-mediumlight: #999;
   --gray-light: #aaa;
   --gray-light-b: #ccc;
   --gray-ultralight: #ddd;
@@ -16,7 +17,7 @@ html {
 }
 
 body {
-  background: #ddd;
+  background: linear-gradient(135deg, #ddd 0%, #aaa 70%);
   padding: 0.6em;
   font-family: monospace;
 }
@@ -25,9 +26,11 @@ body > main {
   max-width: 68em;
   margin: 0 auto;
   padding: 1.6em;
-  background: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 3px 3px 3px #aaa;
+  background: linear-gradient(135deg, #fff 50%, #ddd 100%);
+  border: 1px solid #666;
+  border-top-color: #aaa;
+  border-left-color: #aaa;
+  box-shadow: 3px 3px 3px #666;
 }
 
 body > main > .container > header {
@@ -315,7 +318,13 @@ header + p {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 3px;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.btn:hover {
+  transform: scale(1.02);
+}
+.btn:active {
+  transform: scale(1);
 }
 .btn .icon {
   height: 1.2em;
@@ -332,7 +341,13 @@ header + p {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 3px;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.btn-mid:hover {
+  transform: scale(1.02);
+}
+.btn-mid:active {
+  transform: scale(1);
 }
 .btn-mid .icon {
   height: 1.2em;
@@ -355,7 +370,13 @@ header + p {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 3px;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.btn-big:hover {
+  transform: scale(1.02);
+}
+.btn-big:active {
+  transform: scale(1);
 }
 .btn-big .icon {
   height: 1.2em;
