@@ -625,7 +625,7 @@ body > footer {
   // Page setup
   @page {
     size: auto;
-    margin: 0.1in 0.2in;
+    margin: 0.1in 0.5in;
   }
 
   // Base styles
@@ -637,8 +637,7 @@ body > footer {
 
     > main {
       width: 100%;
-      max-width: auto;
-      margin: 0;
+      max-width: 100%;
       padding: 0;
       border: 0px solid color(white);
     }
@@ -669,12 +668,12 @@ body > footer {
   }
 
   h2 {
-    font-size: 11pt !important;
+    font-size: 10pt !important;
     margin: 0.8em 0 0.4em 0 !important;
   }
 
   h3 {
-    font-size: 9.5pt !important;
+    font-size: 9pt !important;
     margin-bottom: 0.2em !important;
   }
 
@@ -685,7 +684,7 @@ body > footer {
   }
 
   .contact-info {
-    font-size: 8.5pt;
+    font-size: 8pt;
     margin-bottom: 0.6em;
   }
 
@@ -696,7 +695,7 @@ body > footer {
 
   .job,
   .degree {
-    margin-bottom: 0.8em;
+    margin-bottom: 1.2em;
   }
 
   .job-header,
@@ -707,20 +706,20 @@ body > footer {
   // Job/degree content
   .position,
   .degree-name {
-    font-size: 9.75pt;
+    font-size: 9pt;
   }
 
   .location {
-    font-size: 8.5pt;
+    font-size: 8pt;
     margin-bottom: 0.1em;
   }
 
   .dates {
-    font-size: 8pt;
+    font-size: 7pt;
   }
 
   .degree-details {
-    font-size: 8.5pt;
+    font-size: 8pt;
     margin-top: 0.3em;
   }
 
@@ -732,7 +731,7 @@ body > footer {
 
   li {
     margin-bottom: 0.25em;
-    font-size: 9pt;
+    font-size: 8pt;
     line-height: 1.25;
   }
 
@@ -742,7 +741,7 @@ body > footer {
   }
 
   .skill-group h3 {
-    font-size: 9.75pt;
+    font-size: 9pt;
     margin-bottom: 0.3em;
   }
 
@@ -752,7 +751,7 @@ body > footer {
 
   .skill-group li {
     margin-bottom: 0.2em;
-    font-size: 8.5pt;
+    font-size: 8pt;
   }
 
   // Certifications
@@ -761,7 +760,7 @@ body > footer {
   }
 
   .certifications li {
-    font-size: 8.5pt;
+    font-size: 8pt;
     margin-bottom: 0.2em;
   }
 
@@ -778,10 +777,6 @@ body > footer {
 
     body {
       padding: 2em;
-
-      > main {
-        padding: space(xxl);
-      }
 
       > footer {
         margin: space(xxl) auto;
