@@ -408,7 +408,7 @@ li {
   }
 
   h1 {
-    @include text-style(get-font-size(lg), bold, color(black), 0 0 1em);
+    @include text-style(get-font-size(lg), 500, color(black), 0 0 1em);
   }
 }
 
@@ -436,7 +436,7 @@ li {
 
 h1 {
   @extend %heading-base;
-  @include text-style(get-font-size(xl), bold, color(black));
+  @include text-style(get-font-size(xl), 500, color(black));
   line-height: 1.2;
 }
 
