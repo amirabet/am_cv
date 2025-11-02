@@ -230,6 +230,7 @@ body > main > .container > header {
 }
 
 .contact-info {
+  text-align: center;
   color: color(gray-medium);
   font-size: 0.95em;
   margin-bottom: 1em;
@@ -317,11 +318,16 @@ ul {
   list-style-position: outside;
   margin-left: 1.25em;
   margin-top: 0.5em;
+  @media (max-width: #{map.get($breakpoints, sm) - 0.01em}) {
+    padding-left: 0.75em;
+  }
 }
 
 li {
   margin-bottom: 0.5em;
-  text-align: justify;
+  @media (min-width: #{map.get($breakpoints, md) - 0.01em}) {
+    text-align: justify;
+  }
 }
 
 .certifications ul,
@@ -349,7 +355,7 @@ li {
 }
 
 /* Responsive Design */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: #{map.get($breakpoints, md)}) {
   .container {
     padding: 1.25em;
   }
@@ -738,12 +744,17 @@ body > footer {
   ul {
     margin-left: 1em;
     margin-top: 0.3em;
+
+    @media (max-width: #{map.get($breakpoints, sm) - 0.01em}) {
+      padding-left: 0.8em;
+    }
   }
 
   li {
     margin-bottom: 0.25em;
     font-size: 8pt;
     line-height: 1.25;
+    text-align: justify;
   }
 
   // Skills section
