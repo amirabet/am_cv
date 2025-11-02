@@ -315,9 +315,11 @@ section {
 
 /* Lists */
 ul {
+  list-style-type: "▸ ";
   list-style-position: outside;
   margin-left: 1.25em;
   margin-top: 0.5em;
+  padding-left: 1.5em;
   @media (max-width: #{map.get($breakpoints, sm) - 0.01em}) {
     padding-left: 0.75em;
   }
@@ -740,10 +742,10 @@ body > footer {
     margin-top: 0.3em;
   }
 
-  // Lists
   ul {
     margin-left: 1em;
     margin-top: 0.3em;
+    padding-left: 2em;
 
     @media (max-width: #{map.get($breakpoints, sm) - 0.01em}) {
       padding-left: 0.8em;
