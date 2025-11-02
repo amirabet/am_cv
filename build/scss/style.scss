@@ -230,6 +230,7 @@ body > main > .container > header {
 }
 
 .contact-info {
+  text-align: center;
   color: color(gray-medium);
   font-size: 0.95em;
   margin-bottom: 1em;
@@ -314,14 +315,21 @@ section {
 
 /* Lists */
 ul {
+  list-style-type: "▸ ";
   list-style-position: outside;
   margin-left: 1.25em;
   margin-top: 0.5em;
+  padding-left: 1.5em;
+  @media (max-width: #{map.get($breakpoints, sm) - 0.01em}) {
+    padding-left: 0.75em;
+  }
 }
 
 li {
   margin-bottom: 0.5em;
-  text-align: justify;
+  @media (min-width: #{map.get($breakpoints, md) - 0.01em}) {
+    text-align: justify;
+  }
 }
 
 .certifications ul,
@@ -349,7 +357,7 @@ li {
 }
 
 /* Responsive Design */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: #{map.get($breakpoints, md)}) {
   .container {
     padding: 1.25em;
   }
@@ -400,7 +408,7 @@ li {
   }
 
   h1 {
-    @include text-style(get-font-size(lg), bold, color(black), 0 0 1em);
+    @include text-style(get-font-size(lg), 500, color(black), 0 0 1em);
   }
 }
 
@@ -428,7 +436,7 @@ li {
 
 h1 {
   @extend %heading-base;
-  @include text-style(get-font-size(xl), bold, color(black));
+  @include text-style(get-font-size(xl), 500, color(black));
   line-height: 1.2;
 }
 
@@ -734,16 +742,21 @@ body > footer {
     margin-top: 0.3em;
   }
 
-  // Lists
   ul {
     margin-left: 1em;
     margin-top: 0.3em;
+    padding-left: 2em;
+
+    @media (max-width: #{map.get($breakpoints, sm) - 0.01em}) {
+      padding-left: 0.8em;
+    }
   }
 
   li {
     margin-bottom: 0.25em;
     font-size: 8pt;
     line-height: 1.25;
+    text-align: justify;
   }
 
   // Skills section

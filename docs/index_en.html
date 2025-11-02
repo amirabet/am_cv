@@ -75,12 +75,9 @@
     </script>
 
     <!-- Modern Security & Performance -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="DENY" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta
-      http-equiv="Referrer-Policy"
-      content="strict-origin-when-cross-origin"
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://www.google-analytics.com;"
     />
 
     <!-- DNS Prefetch -->
@@ -90,9 +87,9 @@
     <!-- Website stuff -->
     <link rel="manifest" href="site.webmanifest" />
     <link rel="apple-touch-icon" href="icon.png" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/normalize.css" />
@@ -141,10 +138,11 @@
             >
           </p>
           <h2 class="summary" itemprop="description">
-            Frontend Developer with over 15 years of experience. I develop
-            web applications and component libraries using Angular, Blazor, and CSS.
-            I follow Clean Code principles and Agile/Scrum methodologies for technical and 
-            functional analysis. Empathetic team player with product vision.
+            Frontend Developer with over 15 years of experience. I develop web
+            applications and component libraries using Angular, Blazor, and CSS.
+            I follow Clean Code principles and Agile/Scrum methodologies for
+            technical and functional analysis. Empathetic team player with
+            product vision.
           </h2>
         </header>
 
@@ -182,20 +180,21 @@
             </div>
             <ul>
               <li>
-                Implement web applications and modules for ERPs and CRMs, working with
-                backend teams to perform CRUD operations for API queries.
+                Implement web applications and modules for ERPs and CRMs,
+                working with backend teams to perform CRUD operations for API
+                queries.
               </li>
               <li>
-                Develop and maintain a component library without
-                third-party dependencies for multiple products.
+                Develop and maintain a component library without third-party
+                dependencies for multiple products.
               </li>
               <li>
                 Implement AA Accessibility criteria in various products,
                 improving the experience for all users.
               </li>
               <li>
-                Collaborate on the adoption of AI agents in the frontend
-                team's development workflow.
+                Collaborate on the adoption of AI agents in the frontend team's
+                development workflow.
               </li>
               <li>
                 Perform technical and functional analysis of tasks including
@@ -208,16 +207,15 @@
               </li>
               <li>
                 Write technical documentation (Wikis, HowTos, PoC) to
-                standardize department practices and share
-                knowledge.
+                standardize department practices and share knowledge.
               </li>
               <li>
-                Apply CI/CD strategies and pipelines in Azure DevOps:
-                NuGet and NPM configuration.
+                Apply CI/CD strategies and pipelines in Azure DevOps: NuGet and
+                NPM configuration.
               </li>
               <li>
-                Mentored a junior developer for 1,000 hours in an
-                official dual training program.
+                Mentored a junior developer for 1,000 hours in an official dual
+                training program.
               </li>
             </ul>
           </div>
@@ -325,8 +323,8 @@
                 PHP).
               </li>
               <li>
-                Implemented online marketing strategies including SEO,
-                content creation and social media management.
+                Implemented online marketing strategies including SEO, content
+                creation and social media management.
               </li>
             </ul>
           </div>
@@ -363,8 +361,8 @@
             </div>
             <ul>
               <li>
-                Performed design and pre-press tasks for the production of
-                large format advertising materials and displays.
+                Performed design and pre-press tasks for the production of large
+                format advertising materials and displays.
               </li>
             </ul>
           </div>
@@ -381,8 +379,12 @@
           >
             <div class="degree-header">
               <div class="degree-title">
-                <h3 itemprop="name">Bachelor of Fine Arts in Design and Image</h3>
-                <p class="degree-name" itemprop="department">Visual Arts and Design</p>
+                <h3 itemprop="name">
+                  Bachelor of Fine Arts in Design and Image
+                </h3>
+                <p class="degree-name" itemprop="department">
+                  Visual Arts and Design
+                </p>
               </div>
               <div class="degree-meta">
                 <p
